@@ -2,6 +2,7 @@
 
 from django.db import migrations
 
+
 def copy_owners(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
     Owner = apps.get_model('property', 'Owner')

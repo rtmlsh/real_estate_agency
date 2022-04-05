@@ -2,6 +2,7 @@
 
 from django.db import migrations
 
+
 def mark_new_buildings(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
     for flat in Flat.objects.all():

@@ -3,6 +3,7 @@
 from django.db import migrations
 import phonenumbers
 
+
 def create_pure_phonenumbers(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
     for flat in Flat.objects.all():
@@ -12,6 +13,7 @@ def create_pure_phonenumbers(apps, schema_editor):
                 phonenumbers.PhoneNumberFormat.E164
             ) if phonenumbers.is_valid_number(phone_num) else None
         flat.save()
+
 
 class Migration(migrations.Migration):
 
