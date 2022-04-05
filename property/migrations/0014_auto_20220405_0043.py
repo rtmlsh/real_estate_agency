@@ -6,9 +6,14 @@ from django.db import migrations
 def set_owners(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
     Owner = apps.get_model('property', 'Owner')
-    for owner in Owner.objects.all():
-        flats = Flat.objects.filter(owner=owner.owner).all()
-        owner.flats.add()
+
+    for flat in Flat.objects.all():
+        owner = Owner.objects.get(
+            owner=flat.owner,
+            owners_phonenumber=flat.owners_phonenumber,
+            owner_pure_phone=flat.owner_pure_phone
+        )
+        owner.own_flats.add(flat)
 
 
 class Migration(migrations.Migration):
@@ -18,4 +23,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migrations.RunPython(set_owners)
     ]

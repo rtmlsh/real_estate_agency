@@ -12,9 +12,6 @@ def copy_owners(apps, schema_editor):
             owner_pure_phone=flat.owner_pure_phone,
         )
 
-
-
-
 class Migration(migrations.Migration):
 
     dependencies = [
