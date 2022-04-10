@@ -60,7 +60,7 @@ class Flat(models.Model):
     new_building = models.NullBooleanField('Здание новое', db_index=True)
     liked_by = models.ManyToManyField(
         User,
-        related_name='liked_flat',
+        related_name='liked_flats',
         verbose_name='Кто лайкнул'
     )
 
